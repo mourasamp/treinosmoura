@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><title>Meus Treinos</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style id="css">
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Meus Treinos</title><meta name="description" content="Planilha e controle de treinos de corrida."><meta property="og:title" content="Meus Treinos"><meta property="og:description" content="Planilha e controle de treinos de corrida."><meta property="og:type" content="website"><meta property="og:url" content="https://mourasamp.github.io/treinosmoura/"><style id="css">
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --nav:#243650;--navd:#1a2638;--bg:#f7f8fc;--card:#fff;--tx:#1b2433;--mut:#8a93a3;--pill:#ececef;--blue:#0080e8;--tile:#2f4666}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161f;--card:#1b2433;--tx:#eef1f6;--mut:#98a2b3;--pill:#2a3445}}
@@ -19,9 +19,17 @@ h1::before{content:"";flex:none;width:6px;height:30px;border-radius:4px;backgrou
 main{max-width:560px;margin:0 auto;padding:0 14px}
 .card{background:var(--card);border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 1px 3px #0001}
 .card h2{margin:0 0 12px;font-size:18px}
-.tiles{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
-.tile{background:var(--tile);color:#fff;border:0;border-radius:12px;padding:22px 18px;font-size:18px;font-weight:700;display:flex;align-items:center;gap:14px;cursor:pointer;width:100%;text-align:left}
-.ic{width:46px;height:46px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:22px}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 24px}
+.tile{appearance:none;-webkit-appearance:none;position:relative;aspect-ratio:1/1;min-width:0;background:linear-gradient(155deg,#293548 0%,#202b3b 55%,#192333 100%);color:#eef2f7;border:1px solid #354256;border-radius:15px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer;width:100%;text-align:left;font:inherit;box-shadow:0 3px 8px #0002;transition:transform .15s,filter .15s,box-shadow .15s}
+.tile:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:0 6px 14px #0003}
+.tile:active{transform:scale(.98)}
+.tile:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.tile-content{display:flex;flex-direction:column;gap:7px}
+.tile-title{font-size:18px;font-weight:800;letter-spacing:-.2px}
+.tile-desc{font-size:12px;line-height:1.4;color:#aeb9c9;font-weight:500}
+.tile-arrow{align-self:flex-end;font-size:18px;color:#8fa1b9;font-weight:700}
+.ic{width:48px;height:48px;flex:none;border-radius:12px;background:#344b69;display:grid;place-items:center;font-size:23px}
+@media(max-width:360px){.tiles{gap:9px}.tile{padding:12px}.tile-title{font-size:16px}.tile-desc{font-size:11px}.ic{width:42px;height:42px}}
 .wk{font-size:22px;font-weight:700;margin:22px 0 4px}
 .row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .row b{font-size:19px}.sub{margin-top:6px}
@@ -29,7 +37,8 @@ main{max-width:560px;margin:0 auto;padding:0 14px}
 .pill.ok{background:#d8f3e2;color:#157a3c}
 .btn{display:block;width:100%;background:var(--blue);color:#fff;border:0;border-radius:8px;padding:15px;font-size:17px;margin-top:14px;cursor:pointer}
 .btn.sec{background:var(--pill);color:var(--tx)}.btn.red{background:#d64545}
-.body{white-space:pre-wrap;line-height:1.6;font-size:17px}
+.body{white-space:pre-wrap;line-height:1.65;font-size:17px}
+.inline-pace{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:8px;background:#0080e822;color:var(--blue);font-size:14px;font-weight:700;vertical-align:baseline}
 input,textarea{width:100%;font:inherit;font-size:16px;padding:10px;border-radius:8px;border:1px solid var(--mut);background:var(--card);color:var(--tx);margin-top:6px}
 textarea{min-height:300px}
 .msg{text-align:center;color:var(--mut);padding:30px 10px}
@@ -43,6 +52,15 @@ select{width:100%;font:inherit;font-size:16px;padding:10px;border-radius:8px;bor
 .chip{border-radius:12px;padding:12px;text-align:center;color:#fff;display:flex;flex-direction:column;gap:2px}
 .chip b{font-size:26px}.chip small{opacity:.9;font-size:12px}
 .c0{background:#2e9e5b}.c1{background:#0080e8}.c2{background:#e8870c}.c3{background:#d64545}
+.pace-box{clear:both;margin-top:16px;padding:14px;border-radius:12px;background:var(--bg);border:1px solid #0002}
+.pace-title{font-size:15px;font-weight:700;margin:0 0 10px}
+.pace-sub{font-size:13px;color:var(--mut);margin:0 0 10px}
+.pace-note{font-size:13px;line-height:1.45;color:var(--mut);margin:0 0 12px;padding:9px 10px;border-left:3px solid #e8a400;background:var(--pill);border-radius:0 8px 8px 0}
+.pace-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px}
+.pace-item{border-radius:10px;padding:10px;color:#fff;display:flex;flex-direction:column;gap:2px}
+.pace-item small{font-size:12px;opacity:.92}
+.pace-item b{font-size:20px}
+.pace-link{background:none;border:0;color:var(--blue);font-weight:700;padding:0;margin-top:10px;cursor:pointer;font-size:14px;text-decoration:underline}
 .tw{overflow-x:auto}
 .wkedit{background:var(--pill);border:0;border-radius:8px;padding:4px 8px;font-size:15px;cursor:pointer;vertical-align:middle;margin-left:6px}
 .pt{width:100%;border-collapse:separate;border-spacing:3px;font-size:14px;text-align:center;min-width:420px}
@@ -56,7 +74,38 @@ select{width:100%;font:inherit;font-size:16px;padding:10px;border-radius:8px;bor
 code{background:var(--pill);padding:1px 6px;border-radius:5px;font-size:.92em}
 .note{border-left:5px solid #e8a400}
 label{display:block;font-weight:600}
-</style></head><body><div id="app"></div><script id="data" type="application/json">{"W":{"w1":{"date":"2026-11-30","body":"TREINO REGENERATIVO - 5 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- TREINO PRINCIPAL:\n5.000m L +\n6x 80m F, com 60 SEGUNDOS de recuperação CAMINHANDO entre as repetições;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"},"w2":{"date":"2026-12-01","body":"TREINO PROGRESSIVO - 6 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- AQUECIMENTO:\n10 minutos L;\n\n- TREINO PRINCIPAL:\n2.000m L + 2.000m M + 2.000m F;\n\n- DESAQUECIMENTO:\n1.000m L ou caminhando;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"},"w3":{"date":"2026-12-03","body":"TREINO DE RODAGEM - 6 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- AQUECIMENTO:\n10 minutos L;\n\n- TREINO PRINCIPAL:\n6.000m L/M;\n\n- DESAQUECIMENTO:\n1.000m L ou caminhando;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"},"w4":{"date":"2026-12-05","body":"TREINO TEMPO RUN - 8 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- AQUECIMENTO:\n10 minutos L/M;\n\n- EDUCATIVOS DE CORRIDA:\n\n- TREINO PRINCIPAL:\n8.000m F;\n\n- DESAQUECIMENTO:\n1.000m caminhando;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"}},"CFG":{"name":"Equipe"}}</script><script id="appjs">
+
+.treinos-main{max-width:700px}
+.treinos-layout{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+.treinos-list{min-width:0}
+.gym-notice{background:var(--card);border:1px solid #e8a400;border-left:5px solid #e8a400;border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 1px 3px #0001}
+.gym-notice h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:9px}
+.gym-notice p{font-size:15px;line-height:1.55;margin:0;color:var(--tx)}
+.gym-notice .gym-icon{font-size:24px;display:inline-flex;align-items:center;flex:none}
+@media(max-width:760px){.treinos-main{max-width:560px}.gym-notice{margin-top:12px}}
+
+/* Cartões interativos da aba Treinos */
+.workout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0 20px}
+.workout-tile{appearance:none;-webkit-appearance:none;position:relative;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:12px;min-height:158px;width:100%;padding:14px;border:1px solid #354256;border-radius:13px;background:linear-gradient(155deg,#293548 0%,#202b3b 55%,#192333 100%);color:#eef2f7;text-align:left;font:inherit;cursor:pointer;box-shadow:0 3px 8px #0002;transition:transform .15s,filter .15s,box-shadow .15s}
+.workout-tile:hover{filter:brightness(1.05);transform:translateY(-2px);box-shadow:0 6px 14px #0003}
+.workout-tile:active{transform:scale(.98)}
+.workout-tile:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.workout-top{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.workout-day{font-size:13px;font-weight:800;letter-spacing:.2px;text-transform:uppercase}
+.workout-status{font-size:10px;font-weight:800;padding:4px 7px;border-radius:6px;background:#39465a;color:#d6deea;white-space:nowrap}
+.workout-title{font-size:17px;line-height:1.18;font-weight:850;letter-spacing:-.25px;overflow-wrap:anywhere}
+.workout-date{font-size:12px;font-weight:650;opacity:.88}
+.workout-open{font-size:11px;font-weight:750;opacity:.8}
+.workout-tile.done{background:linear-gradient(155deg,#64c9a0,#269b70);border-color:#4fc59a;color:#062b1d}
+.workout-tile.done .workout-status{background:#ffffffaa;color:#075437}
+@media(min-width:700px){.workout-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:360px){.workout-grid{gap:8px}.workout-tile{padding:11px;min-height:150px}.workout-title{font-size:15px}.workout-status{font-size:9px}}
+
+.detail-actions{float:right;display:flex;justify-content:flex-end;align-items:center;margin:0 0 8px 12px}
+.done-toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid #64748b;background:var(--pill);color:#cbd5e1;border-radius:999px;padding:9px 16px;font:inherit;font-size:16px;font-weight:550;cursor:pointer}
+.done-toggle.is-done{background:#d8f3e2;border-color:#2e9e5b;color:#157a3c}
+.done-toggle:active{transform:scale(.98)}
+</style></head><body><div id="app"></div><script id="data" type="application/json">{"W":{"w1":{"date":"2026-11-30","body":"TREINO REGENERATIVO - 5 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- TREINO PRINCIPAL:\n5.000m L +\n6x 80m F, com 60 SEGUNDOS de recuperação CAMINHANDO entre as repetições;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"},"w2":{"date":"2026-12-01","body":"TREINO PROGRESSIVO - 6 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- AQUECIMENTO:\n10 minutos L;\n\n- TREINO PRINCIPAL:\n2.000m L + 2.000m M + 2.000m F;\n\n- DESAQUECIMENTO:\n1.000m L ou caminhando;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"},"w3":{"date":"2026-12-03","body":"TREINO DE RODAGEM - 6 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- AQUECIMENTO:\n10 minutos L;\n\n- TREINO PRINCIPAL:\n6.000m L/M;\n\n- DESAQUECIMENTO:\n1.000m L ou caminhando;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"},"w4":{"date":"2026-12-05","body":"TREINO TEMPO RUN - 8 KM\n\nRealizar:\n\n- ALONGAMENTOS DINÂMICOS\n\n- AQUECIMENTO:\n10 minutos L/M;\n\n- EDUCATIVOS DE CORRIDA:\n\n- TREINO PRINCIPAL:\n8.000m F;\n\n- DESAQUECIMENTO:\n1.000m caminhando;\n\n- ALONGAMENTO MUSCULAR\n\nBom treino!!"}},"CFG":{"name":"Equipe","WL":{"202649":"Dezembro"}}}</script><script id="appjs">
 var D=JSON.parse(document.getElementById("data").textContent),W=D.W,CFG=D.CFG,C={},editor=false,editing=null,isNew=false,dirty=false,taps=0,tt=null,PIN='1234';
 try{C=JSON.parse(localStorage.getItem("chk")||"{}")}catch(e){}
 var NM="";try{NM=localStorage.getItem("nome")||""}catch(e){}
@@ -77,16 +126,96 @@ function home(){
   var now=new Date(),h=now.getHours(),g=h<12?"Bom dia":h<18?"Boa tarde":"Boa noite";
   return '<header>'+logo()+'<h1>'+g+(NM?', '+esc(NM):'')+'!</h1>'+(NM?'<button class="back" id="rename">✏️ Mudar nome</button>':'')+'</header><main>'+
    (NM?'':'<form class="card ask" id="ask"><h2>Como você se chama?</h2><p>Seu nome fica salvo só neste aparelho.</p><input id="f-n" autocomplete="given-name" maxlength="40" placeholder="Seu nome" required><button class="btn">Salvar</button></form>')+
-   '<div class="tiles"><button class="tile" id="t-tr"><span class="ic">🏋️</span>Treinos</button><button class="tile" id="t-pr"><span class="ic">⏱️</span>Parâmetros</button></div></main>';
+   '<div class="tiles">'+
+   '<button class="tile" id="t-tr"><span class="ic">🏃</span><span class="tile-content"><span class="tile-title">Treinos</span><span class="tile-desc">Acesse sua programação e acompanhe sua evolução.</span></span><span class="tile-arrow">Abrir →</span></button>'+
+   '<button class="tile" id="t-pr"><span class="ic">⏱️</span><span class="tile-content"><span class="tile-title">Parâmetros</span><span class="tile-desc">Consulte seus ritmos e ajuste sua distância de referência.</span></span><span class="tile-arrow">Abrir →</span></button>'+
+   '</div></main>';
 }
 function treinos(){
-  var ws=list(),out="",last="";
-  ws.forEach(function(w){var wk=wkn(pd(w.date));
-    if(wk!==last){var wl=(CFG.WL&&CFG.WL[wk])||('Semana '+wk);out+='<div class="wk">'+esc(wl)+(editor?' <button class="wkedit" data-wk="'+wk+'" title="Editar nome da semana">✏️</button>':'')+'</div>';last=wk}
+  var ws=list(),out="",last="",gridOpen=false;
+  ws.forEach(function(w){
+    var wk=wkn(pd(w.date));
+    if(wk!==last){
+      if(gridOpen)out+='</div>';
+      var wl=(CFG.WL&&CFG.WL[wk])||('Semana '+wk);
+      out+='<div class="wk">'+esc(wl)+(editor?' <button class="wkedit" data-wk="'+wk+'" title="Editar nome da semana">✏️</button>':'')+'</div><div class="workout-grid">';
+      last=wk;gridOpen=true;
+    }
     var dn=DS[(pd(w.date).getDay()+6)%7],ok=C[w.id];
-    out+='<div class="card"><div class="row"><b>'+dn+'</b><span class="pill'+(ok?' ok':'')+'">'+(ok?'Executado':'Não executado')+'</span></div><div class="sub"><b>Data:</b> '+dm(w.date)+'</div><button class="btn" data-open="'+esc(w.id)+'">Ver treino</button></div>';});
+    var title=String(w.body||"Treino de corrida").split(/\r?\n/)[0].replace(/^TREINO\s*/i,"").trim()||"Treino de corrida";
+    out+='<button type="button" class="workout-tile'+(ok?' done':'')+'" data-open="'+esc(w.id)+'" aria-label="Abrir treino de '+esc(dn)+' '+dm(w.date)+'">'+
+      '<span class="workout-top"><span class="workout-day">'+esc(dn)+'</span><span class="workout-status">'+(ok?'✓ Executado':'Pendente')+'</span></span>'+
+      '<span class="workout-title">'+esc(title)+'</span>'+
+      '<span class="workout-date">'+dm(w.date)+'</span>'+
+      '<span class="workout-open">Toque para abrir →</span></button>';
+  });
+  if(gridOpen)out+='</div>';
   if(!ws.length)out='<div class="msg">Nenhum treino cadastrado ainda.</div>';
-  return '<header>'+logo()+'<button class="back" id="hm">‹ Início</button><h1>Treinos</h1></header><main>'+(editor?'<button class="btn" id="new">+ Novo treino</button>':'')+out+'</main>';
+  return '<header>'+logo()+'<button class="back" id="hm">‹ Início</button><h1>Treinos</h1></header><main class="treinos-main">'+
+    (editor?'<button class="btn" id="new">+ Novo treino</button>':'')+
+    '<div class="treinos-layout">'+
+    '<aside class="gym-notice"><h2><span class="gym-icon">🏋️</span>Fortalecimento</h2><p>Dias em que não houver treino de corrida, recomenda-se realizar fortalecimento na academia ou em casa. Dê atenção especial às pernas e ao core, respeitando seus limites e mantendo a recuperação como parte do planejamento.</p></aside>'+
+    '<section class="treinos-list">'+out+'</section>'+
+    '</div></main>';
+}
+var PT=[[2000,"8:00","7:10","6:30","5:30"],[2200,"7:20","6:30","5:50","5:00"],[2400,"6:45","6:00","5:20","4:40"],[2600,"6:15","5:30","4:55","4:15"],[2800,"5:45","5:10","4:35","4:00"],[3000,"5:25","4:45","4:20","3:45"],[3100,"5:15","4:40","4:10","3:35"],[3300,"4:55","4:20","3:55","3:25"],[3500,"4:40","4:05","3:40","3:10"]];
+var TN=["Leve (L)","Moderado (M)","Forte (F)","Muito forte (MF)"];
+var ZONE_MAP={
+  MF:{code:"MF",name:"Muito forte (MF)",idx:4,cls:"c3"},
+  F:{code:"F",name:"Forte (F)",idx:3,cls:"c2"},
+  M:{code:"M",name:"Moderado (M)",idx:2,cls:"c1"},
+  L:{code:"L",name:"Leve (L)",idx:1,cls:"c0"}
+};
+var ZONES=[ZONE_MAP.MF,ZONE_MAP.F,ZONE_MAP.M,ZONE_MAP.L];
+function fm(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".")}
+function getTeste(){try{return +(localStorage.getItem("teste")||0)}catch(e){return 0}}
+function getRowTeste(){var t=getTeste();return PT.filter(function(r){return r[0]===t})[0]||null}
+function parseTokens(expr){
+  var parts=String(expr||"").split("/"),list=[];
+  parts.forEach(function(p){
+    var k=p.trim().toUpperCase();
+    if(ZONE_MAP[k]&&list.indexOf(k)===-1)list.push(k);
+  });
+  return list;
+}
+function treinoBodyHtml(body){
+  var row=getRowTeste();
+  var lines=String(body||"").split("\n");
+  var rx=/(\b\d+(?:[.,]\d+)?\s*(?:m|km|min|minutos?)\s+(?:MF|F|M|L)(?:\s*\/\s*(?:MF|F|M|L))*|\b(?:MF|F|M|L)(?:\s*\/\s*(?:MF|F|M|L))+(?=$|[\s;,+.()-])|(?<=^|[\s;,+.()-])(?:MF|F|M|L)(?=$|[\s;,+.()-]))/gi;
+  return lines.map(function(line){
+    var htmlLine=esc(line);
+    if(!row)return htmlLine;
+    return htmlLine.replace(rx,function(match){
+      var m=match.match(/(MF|F|M|L)(?:\s*\/\s*(MF|F|M|L))*$/i);
+      if(!m)return match;
+      var tokens=parseTokens(m[0]);
+      if(!tokens.length)return match;
+      var paces=tokens.map(function(tk){return row[ZONE_MAP[tk].idx]}).join(" a ");
+      return match+'<span class="inline-pace">['+paces+' min/km]</span>';
+    });
+  }).join("\n");
+}
+function detectZones(body){
+  var txt=String(body||""),found=[];
+  ZONES.forEach(function(z){
+    var re=new RegExp("(^|[^A-Za-zÁ-ú0-9])"+z.code+"(?=$|[^A-Za-zÁ-ú0-9])","g");
+    if(re.test(txt))found.push(z);
+  });
+  return found.reverse();
+}
+function treinoPacesHtml(body){
+  var zones=detectZones(body);
+  if(!zones.length)return "";
+  var row=getRowTeste();
+  if(!row){
+    var opts='<option value="0">Escolha seu teste de 12 min...</option>'+PT.map(function(r){return '<option value="'+r[0]+'">'+fm(r[0])+' m</option>'}).join("");
+    return '<div class="pace-box"><div class="pace-title">⏱️ Seus paces neste treino</div><p class="pace-sub">Selecione a distância do seu teste de 12 minutos para ver automaticamente os ritmos de '+zones.map(function(z){return z.code}).join(", ")+'.</p><select id="quick-t">'+opts+'</select><button type="button" class="pace-link" id="go-pr">Ver tabela completa em Parâmetros</button></div>';
+  }
+  var note='<p class="pace-note">Estes ritmos são apenas uma base de referência, calculada a partir do seu teste de 12 minutos. Não é necessário manter exatamente esse pace durante todo o treino, ajuste conforme sua percepção de esforço, condicionamento e condições do dia.</p>';
+   var items=zones.map(function(z){
+    return '<div class="pace-item '+z.cls+'"><small>'+esc(z.name)+'</small><b>'+row[z.idx]+'</b><small>min/km</small></div>';
+  }).join("");
+  return '<div class="pace-box"><div class="pace-title">⏱️ Seus paces neste treino (base: '+fm(row[0])+' m)</div>'+note+'<div class="pace-grid">'+items+'</div><button type="button" class="pace-link" id="go-pr">Alterar distância do teste</button></div>';
 }
 function detail(id){
   var w=W[id];
@@ -94,18 +223,14 @@ function detail(id){
   var d=pd(w.date),ok=C[id];
   var head='<header>'+logo()+'<button class="back" id="bk">‹ Voltar</button><h1>'+DN[d.getDay()]+' '+dm(w.date)+'</h1></header>';
   if(editing===id)return head+'<main><div class="card"><label>Data<input type="date" id="f-d" value="'+esc(w.date)+'"></label><label>Treino<textarea id="f-b">'+esc(w.body)+'</textarea></label><button class="btn" id="save">Salvar e publicar</button><button class="btn sec" id="cancel">Cancelar</button></div></main>';
-  return head+'<main><div class="card"><div class="body">'+esc(w.body)+'</div><button class="btn'+(ok?' sec':'')+'" id="chk">'+(ok?'✓ Feito (toque para desmarcar)':'Marcar como feito')+'</button>'+
+  return head+'<main><div class="card"><div class="detail-actions"><button class="done-toggle'+(ok?' is-done':'')+'" id="chk">✓ Feito</button></div><div class="body">'+treinoBodyHtml(w.body)+'</div>'+treinoPacesHtml(w.body)+
    (editor?'<button class="btn sec" id="edit">Editar</button><button class="btn red" id="del">Excluir</button>':'')+'</div></main>';
 }
 function pub(){
   var data=JSON.stringify({W:W,CFG:CFG}).replace(/</g,"\\u003c");
-  var doc='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><title>Meus Treinos</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style id="css">'+document.getElementById("css").textContent+'</style></head><body><div id="app"></div><script id="data" type="application/json">'+data+'<'+'/script><script id="appjs">'+document.getElementById("appjs").textContent+'<'+'/script></body></html>';
+  var doc='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Meus Treinos</title><meta name="description" content="Planilha e controle de treinos de corrida."><meta property="og:title" content="Meus Treinos"><meta property="og:description" content="Planilha e controle de treinos de corrida."><meta property="og:type" content="website"><meta property="og:url" content="https://mourasamp.github.io/treinosmoura/"><style id="css">'+document.getElementById("css").textContent+'</style></head><body><div id="app"></div><script id="data" type="application/json">'+data+'<'+'/script><script id="appjs">'+document.getElementById("appjs").textContent+'<'+'/script></body></html>';
   var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([doc],{type:"text/html"}));a.download="index.html";document.body.appendChild(a);a.click();a.remove();dirty=false;render();
 }
-var PT=[[2000,"8:00","7:10","6:30","5:30"],[2200,"7:20","6:30","5:50","5:00"],[2400,"6:45","6:00","5:20","4:40"],[2600,"6:15","5:30","4:55","4:15"],[2800,"5:45","5:10","4:35","4:00"],[3000,"5:25","4:45","4:20","3:45"],[3100,"5:15","4:40","4:10","3:35"],[3300,"4:55","4:20","3:55","3:25"],[3500,"4:40","4:05","3:40","3:10"]];
-var TN=["Leve (L)","Moderado (M)","Forte (F)","Muito forte (MF)"];
-function fm(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".")}
-function getTeste(){try{return +(localStorage.getItem("teste")||0)}catch(e){return 0}}
 function params(){
   var t=getTeste(),row=PT.filter(function(r){return r[0]===t})[0];
   var opts='<option value="0">Ainda não fiz o teste.</option>'+PT.map(function(r){return '<option value="'+r[0]+'"'+(r[0]===t?' selected':'')+'>'+fm(r[0])+' m</option>'}).join("");
@@ -147,6 +272,8 @@ function render(){
   [].forEach.call(el.querySelectorAll("[data-wk]"),function(b){b.onclick=function(){var k=b.dataset.wk,cur=(CFG.WL&&CFG.WL[k])||("Semana "+k);var n=prompt("Nome da semana (deixe vazio para voltar ao padrão):",cur);if(n===null)return;n=n.trim().slice(0,60);CFG.WL=CFG.WL||{};if(n&&n!=="Semana "+k)CFG.WL[k]=n;else delete CFG.WL[k];dirty=true;render()}});
   if(q("t-pr"))q("t-pr").onclick=function(){go("parametros")};
   if(q("sel-t"))q("sel-t").onchange=function(){try{localStorage.setItem("teste",this.value)}catch(e){}render()};
+  if(q("quick-t"))q("quick-t").onchange=function(){try{localStorage.setItem("teste",this.value)}catch(e){}render()};
+  if(q("go-pr"))q("go-pr").onclick=function(){go("parametros")};
   if(q("bk"))q("bk").onclick=function(){if(editing&&isNew)delete W[editing];editing=null;go("treinos")};
   [].forEach.call(el.querySelectorAll("[data-open]"),function(b){b.onclick=function(){go("t-"+b.dataset.open)}});
   if(q("chk"))q("chk").onclick=function(){var id=r.slice(2);C[id]=!C[id];try{localStorage.setItem("chk",JSON.stringify(C))}catch(e){}render()};
