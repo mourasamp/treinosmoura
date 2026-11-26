@@ -108,7 +108,7 @@ function fm(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".")}
 function getTeste(){try{return +(localStorage.getItem("teste")||0)}catch(e){return 0}}
 function params(){
   var t=getTeste(),row=PT.filter(function(r){return r[0]===t})[0];
-  var opts='<option value="0">Ainda não fiz o teste</option>'+PT.map(function(r){return '<option value="'+r[0]+'"'+(r[0]===t?' selected':'')+'>'+fm(r[0])+' m</option>'}).join("");
+  var opts='<option value="0">Ainda não fiz o teste.</option>'+PT.map(function(r){return '<option value="'+r[0]+'"'+(r[0]===t?' selected':'')+'>'+fm(r[0])+' m</option>'}).join("");
   var mine='';
   if(row){mine='<div class="mine">'+TN.map(function(n,i){return '<div class="chip c'+i+'"><small>'+n+'</small><b>'+row[i+1]+'</b><small>min/km</small></div>'}).join("")+'</div>'}
   else mine='<p class="mut">Selecione acima a distância que você alcançou no teste de 12 minutos para ver seus ritmos personalizados.</p>';
@@ -116,16 +116,16 @@ function params(){
    PT.map(function(r,i){return '<tr class="'+(i%2?'alt':'')+(r[0]===t?' sel':'')+'"><td class="dc">'+fm(r[0])+' m</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>'}).join("")+'</tbody></table></div><p class="mut sm">Ritmos em minutos por quilômetro (min/km).</p>';
   var ex=PT.filter(function(r){return r[0]===2800})[0];
   return '<header>'+logo()+'<button class="back" id="hm">‹ Início</button><h1>Parâmetros</h1></header><main>'+
-  '<div class="card"><h2>Meus parâmetros</h2><label>Distância do meu teste de 12 minutos<select id="sel-t">'+opts+'</select></label>'+mine+'</div>'+
+  '<div class="card"><h2>Meus parâmetros</h2><label>Distância do meu teste de 12 minutos:<select id="sel-t">'+opts+'</select></label>'+mine+'</div>'+
   '<div class="card"><h2>Tabela de ritmos</h2>'+tb+'</div>'+
-  `<div class="card"><h2>Como ler e entender a tabela</h2>
+  `<div class="card"><h2>Como ler e entender a tabela:</h2>
   <p><b>1. Coluna "DISTÂNCIA" (em verde):</b> Representa a distância máxima que você consegue correr em 12 minutos no seu esforço máximo (variando de 2.000 m a 3.500 m). Quanto maior a distância alcançada no teste, mais rápidos são os seus ritmos de treino.</p>
   <p><b>2. Colunas "RITMOS (PACE)" (em laranja):</b> Indicam o tempo médio que você deve levar para percorrer cada 1 quilômetro (min/km) de acordo com a intensidade exigida na planilha:</p>
   <ul class="lg"><li><b>LEVE (L):</b> Ritmo confortável e regenerativo, onde você consegue conversar sem ficar ofegante.</li>
   <li><b>MODERADO (M):</b> Ritmo contínuo e controlado, um pouco mais exigente, mas sustentável.</li>
   <li><b>FORTE (F):</b> Ritmo intenso, próximo ao seu limiar anaeróbico ou ritmo de prova curta (respiração bem pesada).</li>
   <li><b>MUITO FORTE (MF):</b> Esforço máximo ou próximo do máximo, usado geralmente em tiros curtos.</li></ul></div>
-  <div class="card"><h2>Como aplicar na prática no seu treino</h2>
+  <div class="card"><h2>Como aplicar na prática no seu treino:</h2>
   <p>Para usar a tabela no treino, o primeiro passo é identificar a sua linha com base no seu último teste de 12 minutos.</p>
   <p><b>Exemplo prático:</b> Suponha que no teste de 12 minutos você correu 2.800 m. Olhando na linha correspondente a <code>2.800 m</code>, seus ritmos de referência são:</p>
   <ul class="lg"><li>Leve (L): 5 min e 45 seg por km (<code>00:05:45</code>)</li><li>Moderado (M): 5 min e 10 seg por km (<code>00:05:10</code>)</li><li>Forte (F): 4 min e 35 seg por km (<code>00:04:35</code>)</li><li>Muito Forte (MF): 4 min e 00 seg por km (<code>00:04:00</code>)</li></ul>
