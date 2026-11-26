@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Meus Treinos</title><meta name="description" content="Planilha e controle de treinos de corrida."><meta property="og:title" content="Meus Treinos"><meta property="og:description" content="Planilha e controle de treinos de corrida."><meta property="og:type" content="website"><meta property="og:url" content="https://mourasamp.github.io/treinosmoura/"><style id="css">
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Treinos Moura</title><meta name="theme-color" content="#1a2638"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%232dd4bf%22/%3E%3Cstop offset=%221%22 stop-color=%22%230080e8%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=%222%22 y=%222%22 width=%2260%22 height=%2260%22 rx=%2217%22 fill=%22url(%23g)%22/%3E%3Cpath d=%22M35 7 17 35h13l-2 22 19-30H34z%22 fill=%22white%22/%3E%3C/svg%3E"><meta name="description" content="Planilha e controle de treinos de corrida."><meta property="og:title" content="Treinos Moura"><meta property="og:description" content="Planilha e controle de treinos de corrida."><meta property="og:type" content="website"><meta property="og:url" content="https://mourasamp.github.io/treinosmoura/"><style id="css">
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---nav:#243650;--navd:#1a2638;--bg:#f7f8fc;--card:#fff;--tx:#1b2433;--mut:#8a93a3;--pill:#ececef;--blue:#0080e8;--tile:#2f4666}
+--nav:#243650;--navd:#1a2638;--bg:#f7f8fc;--card:#fff;--tx:#1b2433;--mut:#8a93a3;--pill:#ececef;--blue:#0080e8}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161f;--card:#1b2433;--tx:#eef1f6;--mut:#98a2b3;--pill:#2a3445}}
 :root[data-theme="dark"]{--bg:#10161f;--card:#1b2433;--tx:#eef1f6;--mut:#98a2b3;--pill:#2a3445}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -19,8 +19,8 @@ h1::before{content:"";flex:none;width:6px;height:30px;border-radius:4px;backgrou
 main{max-width:560px;margin:0 auto;padding:0 14px}
 .card{background:var(--card);border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 1px 3px #0001}
 .card h2{margin:0 0 12px;font-size:18px}
-.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 24px}
-.tile{appearance:none;-webkit-appearance:none;position:relative;aspect-ratio:1/1;min-width:0;background:linear-gradient(155deg,#293548 0%,#202b3b 55%,#192333 100%);color:#eef2f7;border:1px solid #354256;border-radius:15px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer;width:100%;text-align:left;font:inherit;box-shadow:0 3px 8px #0002;transition:transform .15s,filter .15s,box-shadow .15s}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;align-items:stretch;gap:12px;margin:18px 0 24px}
+.tile{appearance:none;-webkit-appearance:none;position:relative;aspect-ratio:1/1;height:100%;min-height:0;min-width:0;background:linear-gradient(155deg,#293548 0%,#202b3b 55%,#192333 100%);color:#eef2f7;border:1px solid #354256;border-radius:15px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer;width:100%;text-align:left;font:inherit;box-shadow:0 3px 8px #0002;transition:transform .15s,filter .15s,box-shadow .15s}
 .tile:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:0 6px 14px #0003}
 .tile:active{transform:scale(.98)}
 .tile:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -29,12 +29,8 @@ main{max-width:560px;margin:0 auto;padding:0 14px}
 .tile-desc{font-size:12px;line-height:1.4;color:#aeb9c9;font-weight:500}
 .tile-arrow{align-self:flex-end;font-size:18px;color:#8fa1b9;font-weight:700}
 .ic{width:48px;height:48px;flex:none;border-radius:12px;background:#344b69;display:grid;place-items:center;font-size:23px}
-@media(max-width:360px){.tiles{gap:9px}.tile{padding:12px}.tile-title{font-size:16px}.tile-desc{font-size:11px}.ic{width:42px;height:42px}}
+@media(max-width:360px){.tiles{gap:9px;grid-auto-rows:1fr}.tile{height:100%;padding:12px}.tile-title{font-size:16px}.tile-desc{font-size:11px}.ic{width:42px;height:42px}}
 .wk{font-size:22px;font-weight:700;margin:22px 0 4px}
-.row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-.row b{font-size:19px}.sub{margin-top:6px}
-.pill{background:var(--pill);color:var(--mut);border-radius:20px;padding:6px 14px;font-size:14px;font-weight:600;white-space:nowrap}
-.pill.ok{background:#d8f3e2;color:#157a3c}
 .btn{display:block;width:100%;background:var(--blue);color:#fff;border:0;border-radius:8px;padding:15px;font-size:17px;margin-top:14px;cursor:pointer}
 .btn.sec{background:var(--pill);color:var(--tx)}.btn.red{background:#d64545}
 .body{white-space:pre-wrap;line-height:1.65;font-size:17px}
@@ -45,7 +41,6 @@ textarea{min-height:300px}
 .ask{margin-top:-14px}.ask p{margin:0 0 4px;color:var(--mut)}
 
 #dl{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;background:#e8a400;color:#111;border:0;border-radius:10px;padding:14px;font-size:16px;font-weight:700}
-.top{display:flex;justify-content:space-between;align-items:center}
 select{width:100%;font:inherit;font-size:16px;padding:10px;border-radius:8px;border:1px solid var(--mut);background:var(--card);color:var(--tx);margin-top:6px}
 .mut{color:var(--mut)}.sm{font-size:13px;margin:8px 0 0}
 .mine{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
@@ -228,8 +223,8 @@ function detail(id){
 }
 function pub(){
   var data=JSON.stringify({W:W,CFG:CFG}).replace(/</g,"\\u003c");
-  var doc='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Meus Treinos</title><meta name="description" content="Planilha e controle de treinos de corrida."><meta property="og:title" content="Meus Treinos"><meta property="og:description" content="Planilha e controle de treinos de corrida."><meta property="og:type" content="website"><meta property="og:url" content="https://mourasamp.github.io/treinosmoura/"><style id="css">'+document.getElementById("css").textContent+'</style></head><body><div id="app"></div><script id="data" type="application/json">'+data+'<'+'/script><script id="appjs">'+document.getElementById("appjs").textContent+'<'+'/script></body></html>';
-  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([doc],{type:"text/html"}));a.download="index.html";document.body.appendChild(a);a.click();a.remove();dirty=false;render();
+  var doc='<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Treinos Moura</title><meta name="description" content="Planilha e controle de treinos de corrida."><meta property="og:title" content="Treinos Moura"><meta property="og:description" content="Planilha e controle de treinos de corrida."><meta property="og:type" content="website"><meta property="og:url" content="https://mourasamp.github.io/treinosmoura/"><style id="css">'+document.getElementById("css").textContent+'</style></head><body><div id="app"></div><script id="data" type="application/json">'+data+'<'+'/script><script id="appjs">'+document.getElementById("appjs").textContent+'<'+'/script></body></html>';
+  var a=document.createElement("a"),url=URL.createObjectURL(new Blob([doc],{type:"text/html"}));a.href=url;a.download="index.html";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},1000);dirty=false;render();
 }
 function params(){
   var t=getTeste(),row=PT.filter(function(r){return r[0]===t})[0];
@@ -239,7 +234,6 @@ function params(){
   else mine='<p class="mut">Selecione acima a distância que você alcançou no teste de 12 minutos para ver seus ritmos personalizados.</p>';
   var tb='<div class="tw"><table class="pt"><thead><tr><th rowspan="2" class="dist">DISTÂNCIA</th><th colspan="4" class="hd">RITMOS (PACE) min/km</th></tr><tr><th>LEVE</th><th>MODERADO</th><th>FORTE</th><th>MUITO FORTE</th></tr></thead><tbody>'+
    PT.map(function(r,i){return '<tr class="'+(i%2?'alt':'')+(r[0]===t?' sel':'')+'"><td class="dc">'+fm(r[0])+' m</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>'}).join("")+'</tbody></table></div><p class="mut sm">Ritmos em minutos por quilômetro (min/km).</p>';
-  var ex=PT.filter(function(r){return r[0]===2800})[0];
   return '<header>'+logo()+'<button class="back" id="hm">‹ Início</button><h1>Parâmetros</h1></header><main>'+
   '<div class="card"><h2>Meus parâmetros</h2><label>Distância do meu teste de 12 minutos:<select id="sel-t">'+opts+'</select></label>'+mine+'</div>'+
   '<div class="card note"><b>💡 Recomendação:</b> Faça o teste de 12 minutos para obter a sua base na corrida.</div>'+
