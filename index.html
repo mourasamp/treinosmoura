@@ -117,6 +117,7 @@ function params(){
   var ex=PT.filter(function(r){return r[0]===2800})[0];
   return '<header>'+logo()+'<button class="back" id="hm">‹ Início</button><h1>Parâmetros</h1></header><main>'+
   '<div class="card"><h2>Meus parâmetros</h2><label>Distância do meu teste de 12 minutos:<select id="sel-t">'+opts+'</select></label>'+mine+'</div>'+
+  '<div class="card note"><b>💡 Recomendação:</b> Faça o teste de 12 minutos para obter a sua base na corrida.</div>'+
   '<div class="card"><h2>Tabela de ritmos</h2>'+tb+'</div>'+
   `<div class="card"><h2>Como ler e entender a tabela:</h2>
   <p><b>1. Coluna "DISTÂNCIA" (em verde):</b> Representa a distância máxima que você consegue correr em 12 minutos no seu esforço máximo (variando de 2.000 m a 3.500 m). Quanto maior a distância alcançada no teste, mais rápidos são os seus ritmos de treino.</p>
@@ -135,8 +136,7 @@ function params(){
   <li><b>Parte 2 (<code>6x 80m F</code>, com 60s caminhando):</b> Logo após os 5 km, você fará 6 tiros de 80 metros em ritmo Forte (F).
    <ul><li><b>Dica para tiros curtos:</b> Como 80 metros é uma distância curta, o GPS do relógio demora a atualizar o pace exato (<code>00:04:35</code>). Na prática, encare esse ritmo Forte como uma aceleração firme (cerca de 80% a 85% da sua velocidade máxima), mantendo boa postura e técnica, sem dar um sprint desesperado.</li>
    <li>Após cada tiro de 80 m, caminhe por 60 segundos para baixar os batimentos antes de iniciar o próximo.</li></ul></li>
-  <li><b>Volta à calma (Alongamento Muscular):</b> Finalize com alongamentos estáticos suaves para relaxar a musculatura.</li></ol></div>
-  <div class="card note"><b>💡 Recomendação:</b> Faça o teste de 12 minutos para obter a sua base na corrida.</div></main>`;
+  <li><b>Volta à calma (Alongamento Muscular):</b> Finalize com alongamentos estáticos suaves para relaxar a musculatura.</li></ol></div></main>`;
 }
 function render(){
   var r=route(),el=document.getElementById("app");
