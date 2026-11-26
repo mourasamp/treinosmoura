@@ -112,7 +112,7 @@ function params(){
   var mine='';
   if(row){mine='<div class="mine">'+TN.map(function(n,i){return '<div class="chip c'+i+'"><small>'+n+'</small><b>'+row[i+1]+'</b><small>min/km</small></div>'}).join("")+'</div>'}
   else mine='<p class="mut">Selecione acima a distância que você alcançou no teste de 12 minutos para ver seus ritmos personalizados.</p>';
-  var tb='<div class="tw"><table class="pt"><thead><tr><th rowspan="2" class="dist">DISTÂNCIA</th><th colspan="4" class="hd">RITMOS (PACE)</th></tr><tr><th>LEVE</th><th>MODERADO</th><th>FORTE</th><th>MUITO FORTE</th></tr></thead><tbody>'+
+  var tb='<div class="tw"><table class="pt"><thead><tr><th rowspan="2" class="dist">DISTÂNCIA</th><th colspan="4" class="hd">RITMOS (PACE) min/km</th></tr><tr><th>LEVE</th><th>MODERADO</th><th>FORTE</th><th>MUITO FORTE</th></tr></thead><tbody>'+
    PT.map(function(r,i){return '<tr class="'+(i%2?'alt':'')+(r[0]===t?' sel':'')+'"><td class="dc">'+fm(r[0])+' m</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>'}).join("")+'</tbody></table></div><p class="mut sm">Ritmos em minutos por quilômetro (min/km).</p>';
   var ex=PT.filter(function(r){return r[0]===2800})[0];
   return '<header>'+logo()+'<button class="back" id="hm">‹ Início</button><h1>Parâmetros</h1></header><main>'+
